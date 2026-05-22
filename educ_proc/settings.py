@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-@%qepujhm9bc+-49)t4t^0qtnf9l-$ek=x-!te+iymo_vigp6$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.render.com']  # Ajoutez les domaines autorisés ici
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com', 'group-univers1.onrender.com']
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_browser_reload',  # Commentez ou supprimez cette ligne
+    # 'django_browser_reload',  Commentez ou supprimez cette ligne
     'apps.apps.AppsConfig',
 ]
 
