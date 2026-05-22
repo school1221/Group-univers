@@ -1,0 +1,647 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group-Univers</title>
+    <link rel="icon" href="{% static 'images/Logo GU.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f6fc;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            line-height: 1.5;
+            color: #1e2a3e;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .about-single-div {
+            max-width: 1400px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            transition: all 0.2s ease;
+            padding: 2.5rem;
+        }
+
+        .about-single-div:hover {
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Disposition horizontale avec hauteur égale */
+        .about-horizontal {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: stretch; /* clé : les colonnes prennent la même hauteur */
+        }
+
+        .about-image-col {
+            flex: 1.2;
+            min-width: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .about-text-col {
+            flex: 1.8;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Carrousel : occupe toute la hauteur de la colonne */
+        .carousel-container {
+            width: 100%;
+            height: 100%;         /* prend toute la hauteur du parent */
+            border-radius: 1.2rem;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            background: #eef2f6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel-slides {
+            position: relative;
+            flex: 1;             /* occupe tout l'espace disponible */
+            width: 100%;
+            background-color: #eef2f6;
+        }
+
+        .carousel-slides img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            border-radius: 1rem;
+        }
+
+        .carousel-slides img.active {
+            opacity: 1;
+            z-index: 1;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 0.8rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+
+        .dot.active-dot {
+            background-color: #e94e1f;
+            width: 24px;
+            border-radius: 6px;
+        }
+
+        /* Colonne texte : également pleine hauteur */
+        .about-text-col {
+            justify-content: flex-start;
+        }
+
+        .main-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #f5a800;
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .custom-divider {
+            margin: 1rem 0 1.6rem 0;
+            border: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #e94e1f, #f7b05e, #e0c879);
+            width: 80px;
+            border-radius: 6px;
+        }
+
+        .subhead-leader {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #0f2b3d;
+            margin-bottom: 1.8rem;
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .description-text {
+            font-size: 1.05rem;
+            color: #2c3f4f;
+            display: flex;
+            flex-direction: column;
+            gap: 1.35rem;
+            flex: 1; /* facultatif : permet d'étirer légèrement si besoin */
+        }
+
+        .description-text p {
+            margin: 0;
+            font-weight: 400;
+            line-height: 1.55;
+        }
+
+        /* Responsive : sur mobile, retour à l'empilement classique */
+        @media (max-width: 900px) {
+            .about-horizontal {
+                flex-direction: column;
+            }
+            .about-image-col, .about-text-col {
+                flex: auto;
+                min-height: auto;
+            }
+            .carousel-container {
+                height: auto;
+                min-height: 280px;
+            }
+            .main-title {
+                font-size: 2.2rem;
+            }
+            .subhead-leader {
+                font-size: 1.5rem;
+            }
+            .description-text {
+                font-size: 0.98rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .about-single-div {
+                padding: 1.5rem;
+            }
+            .main-title {
+                font-size: 1.9rem;
+            }
+            .subhead-leader {
+                font-size: 1.35rem;
+            }
+            .custom-divider {
+                width: 65px;
+            }
+        }
+    </style>
+
+
+    <main>
+        <div class="about-single-div">
+            <div class="about-horizontal">
+                <!-- Colonne image : hauteur = colonne texte -->
+                <div class="about-image-col">
+                    <div class="carousel-container" id="imageCarousel">
+                        <div class="carousel-slides">
+                            <!-- Visuels adaptatifs pour Group Univers -->
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&h=600&fit=crop" alt="Manuels scolaires empilés" class="active">
+                            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=800&h=600&fit=crop" alt="Livraison de colis éducatifs">
+                        </div>
+                        <div class="carousel-dots">
+                            <span class="dot active-dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonne texte : même hauteur que l'image -->
+                <div class="about-text-col">
+                    <h1 class="main-title">À propos de Group Univers</h1>
+                    <hr class="custom-divider" aria-label="separator">
+                    <h2 class="subhead-leader">PRÉSENTATION INSTITUTIONNELLE — UNIVERS SARL </h2>
+                    <div class="description-text">
+                        <p>Le Groupe Univers est une entreprise camerounaise spécialisée dans la distribution de manuels et fournitures scolaires ainsi que dans la vente de matériels didactiques. </p>
+                        <p>L’entreprise est présente dans cinq villes stratégiques : Yaoundé, Douala, Bafoussam, Garoua et Bertoua. </p>
+                        <p>A travers son slogan : La distribution au service du développement, le Groupe Univers œuvre au quotidien pour rapprocher les ressources pédagogiques des acteurs de l’éducation, contribuant ainsi au renforcement du secteur éducatif national. </p>
+                        <p>Positionnée au cœur du marché éducatif, Univers SARL se distingue par sa capacité à assurer une diffusion rapide, fiable et structurée des ouvrages scolaires issus de divers éditeurs, en adéquation avec les besoins croissants des établissements et des apprenants. Grâce à une organisation logistique adaptée aux réalités locales, l’entreprise garantit une disponibilité optimale des manuels sur l’ensemble du territoire, y compris dans les zones à forte demande. </p>
+                        <p>Dans une dynamique de partenariat et d’ouverture à l’échelle nationale , Univers SARL collabore avec des acteurs majeurs du secteur, notamment Africa Education Publishing House, , Editions CLE , Nathan, D&L, Vallesse , Wisdom Publishing, etc… consolidant ainsi la qualité, la diversité et la pertinence de son offre éditoriale. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+   
+
+    <script>
+        (function() {
+            const container = document.getElementById('imageCarousel');
+            if (!container) return;
+
+            const slides = container.querySelectorAll('.carousel-slides img');
+            const dots = container.querySelectorAll('.dot');
+            let currentIndex = 0;
+            let intervalId = null;
+            const INTERVAL_MS = 3000;
+
+            function showSlide(index) {
+                if (index >= slides.length) index = 0;
+                if (index < 0) index = slides.length - 1;
+                slides.forEach((img, i) => {
+                    img.classList.toggle('active', i === index);
+                });
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active-dot', i === index);
+                });
+                currentIndex = index;
+            }
+
+            function nextSlide() {
+                showSlide(currentIndex + 1);
+            }
+
+            function startCarousel() {
+                if (intervalId) clearInterval(intervalId);
+                intervalId = setInterval(nextSlide, INTERVAL_MS);
+            }
+
+            function stopCarousel() {
+                if (intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                }
+            }
+
+            startCarousel();
+
+            const carouselZone = container.querySelector('.carousel-slides');
+            if (carouselZone) {
+                carouselZone.addEventListener('mouseenter', stopCarousel);
+                carouselZone.addEventListener('mouseleave', startCarousel);
+            }
+
+            dots.forEach((dot, idx) => {
+                dot.addEventListener('click', () => {
+                    stopCarousel();
+                    showSlide(idx);
+                    startCarousel();
+                });
+            });
+        })();
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="stats-section" style="max-width: 100%; margin: 2rem 1rem;">
+    <h2 class="stats-heading">
+        Voici quelques chiffres clés<br>
+        de notre activité au<br>
+        Cameroun depuis notre<br>
+        création
+    </h2>
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">2000</div>
+            <div class="stat-label">Manuels et livres scolaires</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">6</div>
+            <div class="stat-label">Agences</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Partenaires</div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .stats-section {
+        background: #ffffff;
+        border-radius: 2rem;
+        padding: 2.5rem 2rem;
+        box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+        /* largeur augmentée */
+        max-width: 100%;     /* ou 1400px, 1600px selon besoin */
+        margin: 2rem auto;
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        width: 100%;
+    }
+
+    /* Le reste du style est identique */
+    .stats-heading {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #0a2540;
+        line-height: 1.3;
+        margin-bottom: 2.5rem;
+        letter-spacing: -0.01em;
+        border-left: 5px solid #e94e1f;
+        padding-left: 1.5rem;
+    }
+
+    .stats-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+
+    .stat-card {
+        flex: 1;
+        min-width: 180px;
+        background: #f8fafc;
+        border-radius: 1.5rem;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+        border: 1px solid #eef2f6;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+        border-color: #e2e8f0;
+    }
+
+    .stat-number {
+        font-size: 3.2rem;
+        font-weight: 800;
+        color: #e94e1f;
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+        letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #334155;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    @media (max-width: 750px) {
+        .stats-section {
+            padding: 1.8rem;
+            margin: 1rem;
+        }
+        .stats-heading {
+            font-size: 1.6rem;
+            padding-left: 1rem;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+        }
+        .stat-label {
+            font-size: 0.85rem;
+        }
+        .stats-grid {
+            gap: 1rem;
+        }
+    }
+
+    @media (max-width: 550px) {
+        .stats-grid {
+            flex-direction: column;
+        }
+        .stat-card {
+            width: 100%;
+        }
+        .stats-heading br {
+            display: none;
+        }
+        .stats-heading {
+            white-space: normal;
+        }
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .vm-wrap { max-width: 900px; margin: 0 auto; padding: 1rem 0; font-family: 'Inter', system-ui, sans-serif; }
+  .vm-row { display: flex; gap: 2.5rem; align-items: flex-start; margin-bottom: 2.5rem; }
+  .vm-row.reverse { flex-direction: row-reverse; }
+  .vm-img { flex: 0 0 55%; }
+  .vm-img img { width: 100%; height: 300px; object-fit: cover; display: block; }
+  .vm-text { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 0.5rem; }
+  .vm-text h2 { font-size: 1.8rem; font-weight: 700; color: #111; margin: 0 0 1rem 0; }
+  .vm-text p { font-size: 0.92rem; color: #333; line-height: 1.65; text-align: justify; margin: 0; }
+  @media (max-width: 600px) {
+    .vm-row, .vm-row.reverse { flex-direction: column; }
+    .vm-img { flex: none; width: 100%; }
+  }
+</style>
+
+<div class="vm-wrap">
+  <div class="vm-row">
+    <div class="vm-text">
+      <h2>Notre vision</h2>
+      <p>Notre vision est de devenir le numéro un et le distributeur le plus fiable au Cameroun et dans toute la sous-région Afrique centrale. Nous mettons notre expertise et notre réseau au service d'une accessibilité totale, garantissant un approvisionnement fluide et sécurisé pour nos partenaires. En relevant les défis logistiques majeurs, nous ambitionnons de transformer la distribution régionale et de devenir la référence incontournable du secteur.</p>
+    </div>
+    <div class="vm-img">
+      <img src="https://picsum.photos/id/20/600/300" alt="Notre vision">
+    </div>
+  </div>
+
+  <div class="vm-row reverse">
+    <div class="vm-text">
+      <h2>Notre mission</h2>
+      <p>Notre mission est de garantir à chaque enfant l’accès à une éducation de qualité, peu importe où il se trouve. Pour y parvenir, nous nous engageons à rendre le manuel scolaire disponible dans les moindres recoins du territoire national, brisant ainsi les barrières de la distance. </p>
+      <p>En rapprochant le savoir des élèves des zones les plus reculées, nous contribuons activement à l'égalité des chances et à la construction d'un avenir meilleur pour toute la nation. Ensemble, faisons rayonner l'éducation aux quatre coins du Cameroun.</p>
+    </div>
+    <div class="vm-img">
+      <img src="https://picsum.photos/id/26/600/300" alt="Notre mission">
+    </div>
+  </div>
+</div>
+
+
+
+    
+    {% include 'footer.html' %}
+</body>
+</html>

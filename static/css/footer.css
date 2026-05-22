@@ -1,0 +1,135 @@
+footer.footer {
+  background-color: #4aa0d8;
+  color: #fff;
+  padding: 40px 80px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* SECTION HAUTE */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  padding: 30px 40px;
+  margin-bottom: 40px;
+}
+
+.footer-left h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.footer-left .links {
+  font-size: 16px;
+  color: #e6e6e6;
+}
+
+.urgence-box {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255,255,255,0.1);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.urgence-box i {
+  font-size: 28px;
+  margin-right: 15px;
+}
+
+/* NEWSLETTER */
+.newsletter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.newsletter input {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  width: 350px;
+  outline: none;
+}
+
+.newsletter button {
+  background-color: #fff;
+  color: #007bff;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* SECTION INFÉRIEURE */
+.footer-bottom {
+  text-align: center;
+}
+
+.logo1 img {
+  width: 180px;
+  margin-bottom: 10px;
+}
+
+.slogan {
+  font-style: italic;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.footer-info div {
+  text-align: center;
+  max-width: 220px;
+}
+
+.footer-info i {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.footer-info p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socials a {
+  color: #fff;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.socials a:hover {
+  color: #ffcc00;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer.footer {
+    padding: 30px 20px;
+  }
+}

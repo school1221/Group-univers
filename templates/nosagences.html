@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group-Univers</title>
+    <link rel="icon" href="{% static 'images/Logo GU.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+
+
+<style>
+  .region-row { display: flex; margin-bottom: 2.5rem; min-height: 420px; border-radius: 1rem; overflow: hidden; }
+  .region-sidebar { background: #1e7a34; color: #fff; width: 200px; flex-shrink: 0; display: flex; align-items: flex-end; padding: 2rem 1.5rem; }
+  .region-sidebar h2 { font-size: 2rem; font-weight: 700; color: #fff; }
+  .region-content { flex: 1; padding: 1.5rem 2rem; background: #fff; }
+  .branches-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 3rem; }
+  .branch-name { font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+  .branch-phone { font-size: 0.92rem; margin: 0.1rem 0; }
+  .branch-img { width: 100%; height: 180px; object-fit: cover; border-radius: 0.5rem; margin-top: 0.8rem; display: block; }
+  @media (max-width: 650px) {
+    .region-row { flex-direction: column; }
+    .region-sidebar { width: 100%; min-height: 80px; align-items: center; justify-content: center; }
+    .branches-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<!-- AGENCES -->
+<section>
+  <h2 class="section-title">Nos agences</h2>
+
+  <!-- CENTRE -->
+  <div class="region-row">
+    <div class="region-sidebar"><h2>Yaounde</h2></div>
+    <div class="region-content">
+      <div class="branches-grid">
+        <div>
+          <div class="branch-name">ODZA :</div>
+          <div class="branch-phone">(+237) 699 75 13 39</div>
+          <div class="branch-phone">xxxxxxxxxxxxxxxxxxx</div>
+          <img class="branch-img" src="{% static 'images/agence1.jpeg' %}" alt="ODZA">
+        </div>
+        <div>
+          <div class="branch-name">Port de la gare :</div>
+          <div class="branch-phone">(+237) 672 6xxxxxxxxxxxxxxx</div>
+          <div class="branch-phone">(+237) 673xxxxxxxxxxxxxxxx</div>
+          <img class="branch-img" src="{% static 'images/agence2.jpeg' %}" alt="Port de la gare">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <div class="region-row">
+    <div class="region-sidebar"><h2>Douala</h2></div>
+    <div class="region-content">
+      <div class="branches-grid">
+        <div>
+          <div class="branch-name">Cité des plamiers :</div>
+          <div class="branch-phone">(+237) 657 20 00 28</div>
+          <div class="branch-phone">xxxxxxxxxxxxxxxxxxx</div>
+          <img class="branch-img" src="{% static 'images/agence3.jpeg' %}" alt="Cité des plamiers">
+        </div>
+        <div>
+          <div class="branch-name">Port de lxxxxxxxxxxxxx :</div>
+          <div class="branch-phone">(+237) 672 6xxxxxxxxxxxxxxx</div>
+          <div class="branch-phone">(+237) 673xxxxxxxxxxxxxxxx</div>
+          <img class="branch-img" src="{% static 'images/agence2.jpeg' %}" alt="Port de la gare">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LITTORAL -->
+  <div class="region-row">
+    <div class="region-sidebar"><h2>GAROUA</h2></div>
+    <div class="region-content">
+      <div class="branches-grid">
+        <div>
+          <div class="branch-name">GAROUA :</div>
+          <div class="branch-phone">(+237) 691 88 40 65</div>
+          <div class="branch-phone">(+237) 673 xxxxxxxxxxxxxxxx</div>
+          <img class="branch-img" src="{% static 'images/agence3.jpeg' %}" alt="Garoua">
+        </div>
+        <div>
+          <div class="branch-name">Brazaville :</div>
+          <div class="branch-phone">(+237) 672 xxxxxxxxxxxxxxxx</div>
+          <div class="branch-phone">(+237) 673 93 43 84</div>
+          <img class="branch-img" src="{% static 'images/agence4.jpeg' %}" alt="Brazaville">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEST -->
+  <div class="region-row">
+    <div class="region-sidebar"><h2>BAFFOUSSAM</h2></div>
+    <div class="region-content">
+      <div class="branches-grid">
+        <div>
+          <div class="branch-name">BAFFOUSSAM Branch :</div>
+          <div style="font-size:0.88rem; color:#555; margin-bottom:0.3rem;">Deuxième Carrefour Ewche</div>
+          <div class="branch-phone">(+237) 683 18 60 66</div>
+          <div class="branch-phone">(+237) 651 12xxxxxxxxxxxxxxxx</div>
+          <img class="branch-img" src="{% static 'images/agence5.jpeg' %}" alt="Bafoussam">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+    
+    {% include 'footer.html' %}
+</body>
+</html>

@@ -1,0 +1,1547 @@
+      /* Apropos Page Styles   */
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .hero-section {
+            position: relative;
+            block-size: 100vh;
+            min-block-size: 600px;
+            background-image: url('{% static "app/images/coeching1.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset-block-start: 0;
+            inset-inline-start: 0;
+            inset-inline-end: 0;
+            inset-block-end: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-inline-size: 1200px;
+            inline-size: 100%;
+            padding: 0 24px;
+        }
+
+        .clinic-name {
+            font-size: 18px;
+            font-weight: 400;
+            margin-block-end: 16px;
+            letter-spacing: 0.5px;
+            align-self: start;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 400;
+            margin-block-end: 48px;
+            font-family: Georgia, 'Times New Roman', serif;
+            letter-spacing: 2px;
+             align-self: start;
+        }
+
+        .search-card {
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+            border-radius: 8px;
+            padding: 48px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            margin-block-end: 0;
+           
+        }
+
+        .search-box {
+            position: relative;
+            margin-block-end: 48px;
+        }
+
+        .search-input {
+            inline-size: 100%;
+            padding: 18px 60px 18px 24px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-input::placeholder {
+            color: #7f8c8d;
+        }
+
+        .search-icon {
+            position: absolute;
+            inset-inline-end: 20px;
+            inset-block-start: 50%;
+            transform: translateY(-50%);
+            inline-size: 24px;
+            block-size: 24px;
+            cursor: pointer;
+        }
+
+        .search-icon svg {
+            inline-size: 100%;
+            block-size: 100%;
+            stroke: #3498db;
+            stroke-width: 3;
+            fill: none;
+        }
+
+        .info-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
+        }
+
+        .info-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .info-icon {
+            inline-size: 56px;
+            block-size: 56px;
+            min-inline-size: 56px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon svg {
+            inline-size: 28px;
+            block-size: 28px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .info-content {
+            color: white;
+            text-align: start;
+        }
+
+        .info-title {
+            font-size: 24px;
+            font-weight: 400;
+            margin-block-end: 8px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .info-text {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.95;
+        }
+
+        @media (max-inline-size: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .search-card {
+                padding: 32px 24px;
+            }
+
+            .info-section {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .clinic-name {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-inline-size: 480px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .info-title {
+                font-size: 20px;
+            }
+
+            .info-text {
+                font-size: 14px;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8fbfd;
+        }
+
+        .main-wrapper {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Testimonial Section */
+        .testimonial-container {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8fb 100%);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 400px;
+            margin: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .doctor-section {
+            flex: 0 0 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .doctor-image {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            object-fit: contain;
+            order: 1;
+        }
+
+        .doctor-info {
+            order: 2;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .content-section {
+            flex: 1;
+            padding: 60px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .quote-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 36px;
+            color: #5dade2;
+        }
+
+        .testimonial-text {
+            font-size: 28px;
+            font-style: italic;
+            color: #1a1a1a;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #5dade2;
+            color: white;
+            padding: 14px 32px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .cta-button:hover {
+            background: #3498db;
+        }
+
+        .doctor-info {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .doctor-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #5dade2;
+            margin-bottom: 4px;
+        }
+
+        .doctor-title {
+            font-size: 14px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        .content-section .doctor-info {
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            text-align: left;
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            order: auto;
+        }
+
+        /* About Section */
+        .about-container {
+            background: white;
+            padding: 60px 40px;
+            margin: -80px 20px 0 20px;
+            position: relative;
+            z-index: 2;
+            border-radius: 12px;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .left-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #5dade2;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .main-title .highlight {
+            color: #5dade2;
+            font-style: italic;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 8px;
+            flex: 0 0 300px;
+            min-width: 300px;
+        }
+
+        .stat-percentage {
+            font-size: 56px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1;
+        }
+
+        .stat-divider {
+            width: 100%;
+            height: 3px;
+            background: white;
+            margin-bottom: 16px;
+        }
+
+        .stat-text {
+            font-size: 16px;
+            font-style: italic;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .values-section {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #5dade2;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .value-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .value-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        @media (max-width: 1024px) {
+            .header-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .stat-card {
+                flex: 1;
+                min-width: unset;
+            }
+
+            .values-section {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .about-container {
+                margin: -60px 20px 0 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-container {
+                flex-direction: column;
+                min-height: auto;
+                margin: 40px 20px;
+            }
+
+            .doctor-section {
+                flex: 0 0 40%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-end;
+                padding: 40px 20px;
+                position: relative;
+            }
+
+            .doctor-section {
+                flex: 0 0 auto;
+                padding: 30px 20px;
+            }
+
+            .doctor-image {
+                max-width: 200px;
+            }
+
+            .doctor-info {
+                margin-bottom: 15px;
+            }
+
+            .content-section {
+                flex: 1;
+                padding: 40px 30px;
+            }
+
+            .testimonial-text {
+                font-size: 22px;
+            }
+
+            .doctor-info {
+                margin-top: 30px;
+                padding-top: 30px;
+            }
+
+            .about-container {
+                padding: 40px 20px;
+                margin: -40px 20px 0 20px;
+            }
+
+            .main-title {
+                font-size: 36px;
+            }
+
+            .values-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stat-card {
+                padding: 30px;
+            }
+
+            .stat-percentage {
+                font-size: 44px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .testimonial-container {
+                flex-direction: column;
+                margin: 30px 15px;
+            }
+
+            .doctor-section {
+                padding: 20px;
+            }
+
+            .doctor-image {
+                max-width: 150px;
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .testimonial-text {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .quote-icon {
+                width: 50px;
+                height: 50px;
+                margin-bottom: 20px;
+                font-size: 30px;
+            }
+
+            .about-container {
+                padding: 30px 16px;
+                margin: -30px 15px 0 15px;
+            }
+
+            .main-title {
+                font-size: 28px;
+            }
+
+            .header-section {
+                gap: 20px;
+            }
+
+            .stat-card {
+                padding: 24px;
+            }
+
+            .stat-percentage {
+                font-size: 36px;
+            }
+
+            .value-icon {
+                width: 80px;
+                height: 80px;
+            }
+
+            .value-title {
+                font-size: 18px;
+            }
+        }
+
+
+
+        /* Services Nos Spécialités disponibles pour service aux patients */
+
+
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8fb 100%);
+            padding: 60px 20px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #5dade2;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-title {
+            font-size: 48px;
+            font-weight: 400;
+            color: #1a1a1a;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .main-title .highlight {
+            color: #5dade2;
+            font-style: italic;
+        }
+
+        .view-all-btn {
+            background: #5dade2;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background: #3498db;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #5dade2;
+            stroke-width: 1.5;
+            fill: none;
+        }
+
+        .service-title {
+            font-size: 20px;
+            font-weight: 500;
+            color: #5dade2;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .service-card:nth-child(2),
+        .service-card:nth-child(5) {
+            background: white;
+            box-shadow: 0 8px 24px rgba(93, 173, 226, 0.15);
+            transform: translateY(30px);
+            border: 1px solid rgba(93, 173, 226, 0.1);
+        }
+
+        .service-card:nth-child(2):hover,
+        .service-card:nth-child(5):hover {
+            transform: translateY(22px);
+        }
+
+        @media (max-width: 1024px) {
+            .services-header {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .main-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 28px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card:nth-child(2),
+            .service-card:nth-child(5) {
+                transform: translateY(0);
+            }
+
+            .services-container {
+                padding: 0 20px;
+            }
+        }
+
+
+
+
+        
+        /* Services Nos Spécialités disponibles pour service aux patients */
+
+               * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .appointment-container {
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+            padding: 40px;
+            border-radius: 8px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .left-content {
+            flex: 1;
+            color: white;
+        }
+
+        .appointment-title {
+            font-size: 44px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .appointment-features {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature::before {
+            content: '•';
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .right-content {
+            flex: 0 0 auto;
+        }
+
+        .phone-box {
+            border: 2px solid white;
+            border-radius: 8px;
+            padding: 24px 32px;
+            text-align: center;
+            color: white;
+        }
+
+        .phone-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .phone-icon {
+            display: inline-block;
+        }
+
+        .phone-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .phone-number {
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .appointment-container {
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 30px;
+            }
+
+            .appointment-title {
+                font-size: 32px;
+            }
+
+            .appointment-features {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .phone-box {
+                padding: 20px 24px;
+            }
+
+            .phone-number {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .appointment-container {
+                padding: 24px 16px;
+            }
+
+            .appointment-title {
+                font-size: 24px;
+                margin-bottom: 16px;
+            }
+
+            .appointment-features {
+                font-size: 14px;
+            }
+
+            .phone-box {
+                padding: 16px 20px;
+            }
+
+            .phone-number {
+                font-size: 20px;
+            }
+
+            .phone-label {
+                font-size: 12px;
+            }
+        }
+
+
+
+
+
+
+          /* <!-- temoignages des patients --> */
+
+
+                tyle>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+        }
+
+        .testimonials-section {
+            max-inline-size: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px;
+            background: linear-gradient(to bottom, #e8f4f8 0%, #f0f4f8 100%);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-block-end: 60px;
+        }
+
+        .section-title-wrapper {
+            flex: 1;
+        }
+
+        .section-subtitle {
+            font-size: 16px;
+            color: #5dade2;
+            margin-block-end: 10px;
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-size: 48px;
+            color: #2c3e50;
+            font-weight: 400;
+            line-height: 1.3;
+        }
+
+        .section-title .highlight {
+            color: #5dade2;
+            font-weight: 400;
+        }
+
+        .services-button {
+            background: #7cb342;
+            color: white;
+            border: none;
+            padding: 14px 35px;
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(124, 179, 66, 0.3);
+            transition: all 0.3s ease;
+            margin-block-start: 20px;
+        }
+
+        .services-button:hover {
+            background: #6fa135;
+            box-shadow: 0 4px 12px rgba(124, 179, 66, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            background: white;
+            padding: 50px 60px;
+            border-radius: 12px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .testimonial-image {
+            flex-shrink: 0;
+        }
+
+        .profile-image {
+            inline-size: 180px;
+            block-size: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-content {
+            flex: 1;
+            position: relative;
+        }
+
+        .quote-icon {
+            inline-size: 60px;
+            block-size: 60px;
+            border: 3px solid #c8e6c9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-block-end: 25px;
+        }
+
+        .quote-icon::before {
+            content: '"';
+            font-size: 48px;
+            color: #7cb342;
+            font-family: Georgia, serif;
+            line-height: 1;
+            margin-block-start: -8px;
+        }
+
+        .testimonial-text {
+            font-size: 27px;
+            line-height: 1.5;
+            color: #2c3e50;
+            font-style: italic;
+            margin-block-end: 25px;
+            font-weight: 400;
+        }
+
+        .testimonial-author {
+            font-size: 18px;
+            color: #5dade2;
+            font-weight: 500;
+        }
+
+        .testimonial-counter {
+            position: absolute;
+            inset-inline-end: 60px;
+            inset-block-start: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .counter-number {
+            font-size: 32px;
+            color: #5dade2;
+            font-weight: 300;
+        }
+
+        .counter-divider {
+            inline-size: 2px;
+            block-size: 60px;
+            background: #5dade2;
+        }
+
+        .counter-scroll {
+            inline-size: 20px;
+            block-size: 80px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .counter-scroll::before {
+            content: '';
+            position: absolute;
+            inset-block-start: 50%;
+            inset-inline-start: 50%;
+            transform: translate(-50%, -50%);
+            inline-size: 4px;
+            block-size: 30px;
+            background: #5dade2;
+            border-radius: 2px;
+        }
+
+        @media (max-inline-size: 968px) {
+            .testimonials-section {
+                padding: 60px 20px;
+            }
+
+            .section-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+
+            .testimonial-card {
+                flex-direction: column;
+                padding: 40px 30px;
+                text-align: center;
+            }
+
+            .profile-image {
+                inline-size: 140px;
+                block-size: 140px;
+                margin: 0 auto;
+            }
+
+            .testimonial-content {
+                align-items: center;
+            }
+
+            .quote-icon {
+                margin: 0 auto 20px;
+            }
+
+            .testimonial-text {
+                font-size: 22px;
+            }
+
+            .testimonial-counter {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                margin-block-start: 30px;
+            }
+
+            .counter-divider {
+                inline-size: 60px;
+                block-size: 2px;
+            }
+        }
+
+        @media (max-inline-size: 640px) {
+            .section-title {
+                font-size: 28px;
+            }
+
+            .testimonial-text {
+                font-size: 18px;
+            }
+        }
+
+
+
+
+        
+                /* <!-- Réservez un Rendez-vous avec un Spécialiste --> */
+                       * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f5f5f5;
+        }
+
+        .appointment-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            background: #f8f9fa;
+        }
+
+        .image-side {
+            position: relative;
+            background-image: url('https://images.pexels.com/photos/236380/pexels-photo-236380.jpeg?auto=compress&cs=tinysrgb&w=1200');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .form-side {
+            background: white;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .form-title {
+            font-size: 48px;
+            font-weight: 400;
+            margin-bottom: 40px;
+            line-height: 1.3;
+            color: #2c3e50;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .form-title .highlight {
+            color: #5dade2;
+        }
+
+        .appointment-form {
+            max-width: 600px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 14px 16px;
+            font-size: 15px;
+            border: 1px solid #dfe6e9;
+            border-radius: 4px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+            background: #f8f9fa;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: #5dade2;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(93, 173, 226, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .date-input {
+            position: relative;
+        }
+
+        .date-input input[type="date"] {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .date-input input[type="date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            opacity: 0.6;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            color: white;
+            background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+
+        .submit-button:active {
+            transform: translateY(0);
+        }
+
+        .consent-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .consent-checkbox {
+            width: 18px;
+            height: 18px;
+            min-width: 18px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #5dade2;
+        }
+
+        .consent-label {
+            font-size: 13px;
+            color: #636e72;
+            line-height: 1.5;
+        }
+
+        .consent-label a {
+            color: #5dade2;
+            text-decoration: none;
+        }
+
+        .consent-label a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1024px) {
+            .appointment-section {
+                grid-template-columns: 1fr;
+            }
+
+            .image-side {
+                min-height: 300px;
+            }
+
+            .form-side {
+                padding: 60px 40px;
+            }
+
+            .form-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-side {
+                padding: 40px 24px;
+            }
+
+            .form-title {
+                font-size: 32px;
+                margin-bottom: 32px;
+            }
+
+            .image-side {
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-title {
+                font-size: 28px;
+            }
+        }
+
+
+   /* <!-- heure du rendez-vous --> */
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8fb 100%);
+            padding: 60px 20px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .contact-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            background: #5dade2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 40px;
+            height: 40px;
+            stroke: white;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .contact-content {
+            flex: 1;
+        }
+
+        .contact-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        .contact-text {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .contact-text + .contact-text {
+            margin-top: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-title {
+                font-size: 20px;
+            }
+
+            .contact-icon {
+                width: 70px;
+                height: 70px;
+            }
+
+            .contact-icon svg {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 40px 16px;
+            }
+
+            .contact-card {
+                gap: 16px;
+            }
+
+            .contact-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            .contact-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+
+            .contact-title {
+                font-size: 18px;
+            }
+
+            .contact-text {
+                font-size: 14px;
+            }
+        }

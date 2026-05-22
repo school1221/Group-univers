@@ -1,0 +1,956 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*Mission, Vision, Valeurs section */
+.service {
+    background-color: white;
+    padding: 20px;
+
+}
+
+.service h2 {
+    font-size: 2.4em;
+    color: #2a9fde;
+    text-align: start;
+
+    margin-top: 20px;
+
+}
+
+.mission-vision-valeurs {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px 0;
+
+}
+
+.mission-card {
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    color: white;
+
+    transition: background-color 0.3s ease;
+
+}
+
+.mission-card-1 {
+    background: blue;
+
+}
+
+.mission-card-2 {
+    background: #6a5a9a;
+
+}
+
+.mission-card-3 {
+    background: red;
+
+}
+
+.mission-card:hover {
+    background-color: #7a6ba8;
+
+}
+
+.icon-container {
+    background: #f9f9f9;
+
+    border-radius: 50%;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+.icon {
+    width: 50px;
+
+    height: 50px;
+
+}
+
+.mission-card h3 {
+    margin: 15px 0;
+    font-size: 1.5em;
+    color: white;
+
+}
+
+.mission-card p {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+Les evenements à venir .events {
+    background-color: #2d0438;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.events-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.events-header h2 {
+    font-size: 2em;
+    margin: 0;
+    color: #ff5722;
+
+}
+
+.events-body {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 10px;
+
+    background-color: white;
+
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.events-label .label {
+    background-color: #ff5722;
+
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.events-text p {
+    margin: 0;
+
+    color: white;
+
+}
+
+/*les formations propose pas l'entreprise */
+
+.formation-offer {
+    background-color: white;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.formation-offer h2 {
+    font-size: 2em;
+    color: black;
+    text-align: start;
+}
+
+.offer-content {
+    display: flex;
+
+    align-items: stretch;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+}
+
+.offer-description,
+.offer-image-container {
+    flex: 1;
+
+    background-color: #2d0438;
+
+    color: white;
+
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.offer-image-container {
+    background-color: #f0f0f0;
+
+}
+
+.offer-image {
+    max-width: 100%;
+
+    height: auto;
+
+    border-radius: 10px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  pour le defilement des formations slider images carousel  */
+.page-container {
+    min-height: 100vh;
+    background-color: #1150cd;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.magic-slider {
+    position: relative;
+    height: 600px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    background-size: cover;
+    background-position: center;
+}
+
+/*Gradient overlay */
+.gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
+.slider-content {
+    position: relative;
+    z-index: 2;
+    padding: 48px;
+    color: white;
+}
+
+.slider-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+
+.slider-content h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #4ADE80;
+    margin-bottom: 1rem;
+}
+
+.slider-content p {
+    max-width: 600px;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.see-more {
+    background: white;
+    color: black;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.see-more:hover {
+    background-color: #f0f0f0;
+}
+
+.slider-controls {
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.arrow-buttons {
+    position: absolute;
+    left: -45%;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    display: flex;
+    gap: 2px;
+    z-index: 10;
+}
+
+.arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #4ADE80;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    padding: 0;
+}
+
+.arrow:hover {
+    background: #22C55E;
+}
+
+.arrow svg {
+    color: white;
+    width: 18px;
+    height: 18px;
+}
+
+.slider-images {
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+}
+
+.slider-image {
+    width: 128px;
+    height: 192px;
+    border-radius: 12px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.slider-image:hover {
+    transform: scale(1.05);
+}
+
+.slider-image.active {
+    border: 2px solid #4ADE80;
+}
+
+/*Tree Silhouettes */
+.magic-slider::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    
+    background-size: cover;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .slider-content h1 {
+        font-size: 3rem;
+    }
+
+    .slider-content h2 {
+        font-size: 2rem;
+    }
+
+    .slider-images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .slider-image {
+        width: 100%;
+        height: 140px;
+    }
+}
+
+/*Pour les patenaire d'educt-proc consulting */
+.titre-centre {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: blue;
+}
+
+Container principal .partenaires-container {
+    width: 100%;
+    padding: 3rem 0;
+    background-color: white;
+    overflow: hidden;
+}
+
+/*Conteneur des images */
+.images-alignees {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-track {
+    display: flex;
+    gap: 70px;
+    animation: deplacement-gauche-droite 20s linear infinite;
+}
+
+Style des images .slider-image,
+.slider-image1 {
+    max-width: 100px;
+    height: auto;
+}
+
+/*Animation de défilement */
+@keyframes deplacement-gauche-droite {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-- Temoigneage de nos encient etudients  */
+.carousel-container {
+    max-width: var(--carousel-width);
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    background-color: var(--carousel-bg-color);
+    padding: var(--carousel-padding);
+    border-radius: var(--carousel-border-radius);
+    overflow: hidden;
+    padding-bottom: 100px;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform; /* Améliore les performances */
+}
+
+.carousel-slide {
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-image {
+    width: 100%;
+    height: var(--carousel-image-height);
+    object-fit: cover;
+    border-radius: var(--carousel-image-border-radius);
+}
+
+.carousel-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Changez de space-between à center */
+    padding: 0 1rem;
+    gap: 1200px; /* Ajoutez un espace entre les boutons, ajustez si nécessaire */
+}
+
+.carousel-button {
+    background-color: var(--carousel-button-bg-color, red); /* Changez la couleur de fond par défaut en rouge */
+    color: white; /* Changez la couleur de texte en blanc pour un meilleur contraste */
+    border: none;
+    border-radius: 60%;
+    width: var(--carousel-button-size);
+    height: var(--carousel-button-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--carousel-button-shadow);
+    transition: background-color 0.3s;
+}
+
+.carousel-button:hover {
+    background-color: darkred; /* Changez la couleur au survol */
+}
+
+.carousel-dots {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-dot.active {
+    background-color: blue;
+}

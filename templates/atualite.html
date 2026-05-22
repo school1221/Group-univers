@@ -1,0 +1,516 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group-Univers</title>
+    <link rel="icon" href="{% static 'images/Logo GU.png' %}" type="image/png">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+</head>
+<body>
+    {% include 'header.html' %}
+
+
+
+
+
+
+
+
+
+
+<style>
+  .actualite-page * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  .actualite-page {
+    font-family: 'Nunito', 'Inter', system-ui, sans-serif;
+    background: #f8fafc;
+    padding: 32px 16px 48px;
+    min-height: 100vh;
+  }
+
+  .actualite-hero {
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 36px;
+    padding: 0 8px;
+  }
+  .actualite-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #f5a800;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  .actualite-text {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .actualite-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 8px;
+  }
+
+  .actualite-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+  .actualite-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    border-color: rgba(26, 61, 110, 0.25);
+  }
+  .actualite-card img {
+    width: 100%;
+    height: 110px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .actualite-card:hover img { transform: scale(1.04); }
+
+  .actualite-card-body {
+    padding: 14px 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+  .actualite-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #1a3d6e;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: rgba(26, 61, 110, 0.1);
+    padding: 3px 10px;
+    border-radius: 20px;
+    align-self: flex-start;
+    display: inline-block;
+  }
+  .actualite-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.3;
+    margin: 0;
+  }
+  .actualite-card-desc {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ===== MODAL ===== */
+  .actualite-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 20px;
+  }
+  .actualite-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Layout horizontal : image gauche + texte droite */
+/* Remplacez uniquement ces 2 règles dans votre style */
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  max-width: 1200px;   /* était 960px */
+  width: 100%;
+  max-height: 95vh;    /* était 92vh */
+  display: flex;
+  flex-direction: row;
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.3s ease;
+  box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+  overflow: hidden;
+}
+
+
+  .actualite-modal.active .modal-content {
+    transform: scale(1) translateY(0);
+  }
+
+  /* Partie gauche : image grande */
+.modal-image {
+  flex: 0 0 60%;       /* était 55% */
+  position: relative;
+  background: #111;
+  overflow: hidden;
+  min-height: 600px;   /* hauteur minimale garantie */
+}
+  .modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;       /* ← affiche l'image entière sans recadrage */
+    object-position: center;
+    display: block;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.95);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #1a1a1a;
+    z-index: 3;
+    transition: background 0.2s, transform 0.2s;
+    line-height: 1;
+  }
+  .modal-close:hover {
+    background: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+
+  /* Partie droite : texte */
+  .modal-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    border-left: 1px solid #e8e8e8;
+  }
+
+  .modal-body {
+    padding: 28px 26px 20px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+  }
+  .modal-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a3d6e;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    background: rgba(26,61,110,0.12);
+    padding: 5px 14px;
+    border-radius: 24px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .modal-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .modal-desc {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .modal-footer {
+    padding: 16px 26px 22px;
+    border-top: 1px solid #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .modal-meta { font-size: 11px; color: #999; }
+  .modal-action {
+    background: #1a3d6e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+  .modal-action:hover { background: #122d54; transform: translateY(-1px); }
+  .modal-action svg { width: 15px; height: 15px; stroke: white; fill: none; stroke-width: 2; }
+
+  .modal-body::-webkit-scrollbar { width: 5px; }
+  .modal-body::-webkit-scrollbar-track { background: #f4f4f4; }
+  .modal-body::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+  body.modal-open { overflow: hidden; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 700px) {
+    .modal-content {
+      flex-direction: column;   /* empilé sur mobile */
+      max-height: 95vh;
+    }
+    .modal-image {
+      flex: 0 0 auto;
+      height: 260px;
+    }
+    .modal-image img { object-fit: contain; }
+    .modal-right { border-left: none; border-top: 1px solid #e8e8e8; }
+    .modal-body { padding: 18px 18px 14px; }
+    .modal-title { font-size: 18px; }
+    .modal-footer { flex-direction: column; align-items: stretch; }
+    .modal-action { justify-content: center; }
+    .modal-meta { text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    .actualite-page { padding: 24px 12px 32px; }
+    .actualite-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .actualite-card img { height: 100px; }
+    .actualite-card-body { padding: 12px 14px 14px; }
+    .actualite-card-title { font-size: 13px; }
+    .actualite-card-desc { font-size: 11px; }
+  }
+  @media (max-width: 420px) {
+    .actualite-grid { grid-template-columns: 1fr; }
+    .actualite-title { font-size: 18px; }
+  }
+</style>
+
+<main class="actualite-page">
+
+  <section class="actualite-hero">
+    <h1 class="actualite-title">Actualités Group Univers</h1>
+    <p class="actualite-text">Retrouvez nos dernières images métier : logistique, facturation, ventes et qualité au service de la distribution des manuels scolaires au Cameroun.</p>
+  </section>
+
+  <section class="actualite-grid">
+
+    <article class="actualite-card"
+             data-modal
+             data-label="Logistique"
+             data-title="Livraison professionnelle"
+             data-desc="Nos chauffeurs assurent des livraisons rapides et sécurisées vers les écoles, librairies et domiciles au Cameroun. Chaque véhicule est équipé d'un système de géolocalisation pour un suivi en temps réel. Nous garantissons l'intégrité de vos manuels scolaires grâce à un emballage renforcé et une manipulation soignée par notre équipe formée."
+             data-image="{% static 'images/chauffeurs.jpeg' %}"
+             data-image-alt="Chauffeurs Group Univers">
+      <img src="{% static 'images/chauffeurs.jpeg' %}" alt="Chauffeurs Group Univers" loading="lazy">
+      <div class="actualite-card-body">
+        <span class="actualite-card-label">Logistique</span>
+        <h2 class="actualite-card-title">Livraison professionnelle</h2>
+        <p class="actualite-card-desc">Nos chauffeurs assurent des livraisons rapides et sécurisées vers les écoles et librairies.</p>
+      </div>
+    </article>
+
+    <article class="actualite-card"
+             data-modal
+             data-label="Commercial"
+             data-title="Équipe commerciale dédiée"
+             data-desc="Des conseillers disponibles pour vous aider à choisir les meilleurs manuels et à organiser vos commandes. Notre équipe maîtrise les programmes scolaires camerounais et vous propose des solutions adaptées à votre établissement, votre librairie ou vos besoins familiaux. Contact par téléphone, WhatsApp ou email."
+             data-image="{% static 'images/commerciaux.jpeg' %}"
+             data-image-alt="Commerciaux Group Univers">
+      <img src="{% static 'images/commerciaux.jpeg' %}" alt="Commerciaux Group Univers" loading="lazy">
+      <div class="actualite-card-body">
+        <span class="actualite-card-label">Commercial</span>
+        <h2 class="actualite-card-title">Équipe dédiée</h2>
+        <p class="actualite-card-desc">Des conseillers disponibles pour vous aider à choisir vos manuels et organiser vos commandes.</p>
+      </div>
+    </article>
+
+    <article class="actualite-card"
+             data-modal
+             data-label="Facturation"
+             data-title="Processus transparent"
+             data-desc="Une gestion claire des commandes et des factures pour faciliter vos achats de manuels scolaires. Recevez vos devis et factures par email, payez en toute sécurité via mobile money ou virement bancaire. Un historique complet de vos transactions est disponible dans votre espace client."
+             data-image="{% static 'images/comptable.jpeg' %}"
+             data-image-alt="Service facturation Group Univers">
+      <img src="{% static 'images/comptable.jpeg' %}" alt="Service facturation Group Univers" loading="lazy">
+      <div class="actualite-card-body">
+        <span class="actualite-card-label">Facturation</span>
+        <h2 class="actualite-card-title">Processus transparent</h2>
+        <p class="actualite-card-desc">Une gestion claire des commandes et des factures pour faciliter vos achats.</p>
+      </div>
+    </article>
+
+    <article class="actualite-card"
+             data-modal
+             data-label="Qualité"
+             data-title="Contrôle rigoureux"
+             data-desc="Chaque commande est vérifiée pour assurer la qualité des ouvrages avant expédition. Nos contrôleurs inspectent l'état des couvertures, la reliure et l'impression. En cas de défaut, le produit est immédiatement remplacé. Votre satisfaction est notre priorité."
+             data-image="{% static 'images/controleur.jpeg' %}"
+             data-image-alt="Contrôle qualité Group Univers">
+      <img src="{% static 'images/controleur.jpeg' %}" alt="Contrôle qualité Group Univers" loading="lazy">
+      <div class="actualite-card-body">
+        <span class="actualite-card-label">Qualité</span>
+        <h2 class="actualite-card-title">Contrôle rigoureux</h2>
+        <p class="actualite-card-desc">Chaque commande est vérifiée pour assurer la qualité des ouvrages avant expédition.</p>
+      </div>
+    </article>
+
+    <article class="actualite-card"
+             data-modal
+             data-label="Gestion"
+             data-title="Suivi des commandes"
+             data-desc="Une coordination efficace entre nos équipes pour livrer vos manuels dans les délais souhaités. De la réception de votre commande à la livraison finale, chaque étape est tracée. Recevez des notifications SMS/email pour suivre l'avancement en temps réel."
+             data-image="{% static 'images/facturation.jpeg' %}"
+             data-image-alt="Gestion des commandes Group Univers">
+      <img src="{% static 'images/facturation.jpeg' %}" alt="Gestion des commandes Group Univers" loading="lazy">
+      <div class="actualite-card-body">
+        <span class="actualite-card-label">Gestion</span>
+        <h2 class="actualite-card-title">Suivi des commandes</h2>
+        <p class="actualite-card-desc">Une coordination efficace pour livrer vos manuels dans les délais souhaités.</p>
+      </div>
+    </article>
+
+    <article class="actualite-card"
+             data-modal
+             data-label="Sécurité"
+             data-title="Emballage protégé"
+             data-desc="Un emballage soigné et un suivi constant pour protéger vos manuels scolaires jusqu'à la livraison. Nous utilisons du carton renforcé, du film bulle et des cales en mousse pour éviter tout choc. Vos ouvrages arrivent dans le même état qu'au départ de nos entrepôts."
+             data-image="{% static 'images/securite.jpeg' %}"
+             data-image-alt="Sécurité des livraisons Group Univers">
+      <img src="{% static 'images/securite.jpeg' %}" alt="Sécurité des livraisons Group Univers" loading="lazy">
+      <div class="actualite-card-body">
+        <span class="actualite-card-label">Sécurité</span>
+        <h2 class="actualite-card-title">Emballage protégé</h2>
+        <p class="actualite-card-desc">Un emballage soigné et un suivi constant pour protéger vos manuels jusqu'à la livraison.</p>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<!-- MODAL -->
+<div class="actualite-modal" id="actualiteModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal-content">
+
+    <!-- Gauche : image grande -->
+    <div class="modal-image">
+      <button class="modal-close" aria-label="Fermer" id="modalClose">&times;</button>
+      <img id="modalImg" src="" alt="">
+    </div>
+
+    <!-- Droite : texte -->
+    <div class="modal-right">
+      <div class="modal-body">
+        <span class="modal-label" id="modalLabel"></span>
+        <h3 class="modal-title" id="modalTitle"></h3>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+      <div class="modal-footer">
+        <span class="modal-meta">Échap ou cliquez à l'extérieur pour fermer</span>
+        <a href="{% url 'contact' %}" class="modal-action" id="modalAction">
+          Nous contacter
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  const modal      = document.getElementById('actualiteModal');
+  const modalClose = document.getElementById('modalClose');
+  const modalImg   = document.getElementById('modalImg');
+  const modalLabel = document.getElementById('modalLabel');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalDesc  = document.getElementById('modalDesc');
+  const modalAction= document.getElementById('modalAction');
+  let lastFocused  = null;
+
+  function openModal(card) {
+    lastFocused = document.activeElement;
+    modalImg.src      = card.dataset.image    || '';
+    modalImg.alt      = card.dataset.imageAlt || '';
+    modalLabel.textContent = card.dataset.label || '';
+    modalTitle.textContent = card.dataset.title || '';
+    modalDesc.textContent  = card.dataset.desc  || '';
+
+    const cat = (card.dataset.label || '').toLowerCase();
+    if (cat === 'commercial') {
+      modalAction.innerHTML = 'Parler à un conseiller <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    } else if (cat === 'facturation') {
+      modalAction.innerHTML = 'Accès espace client <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    } else {
+      modalAction.innerHTML = 'Nous contacter <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+    }
+
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+    modalClose.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    if (lastFocused && lastFocused.focus) lastFocused.focus();
+  }
+
+  document.querySelectorAll('[data-modal]').forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.addEventListener('click', e => {
+      if (e.target.closest('a')) return;
+      openModal(card);
+    });
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(card); }
+    });
+  });
+
+  modalClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+  });
+})();
+</script>
+
+
+
+
+    {% include 'footer.html' %}
+</body>
+</html>
