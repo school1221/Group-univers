@@ -1835,6 +1835,39 @@
           </div>
         </div>
       </a>
+
+
+            <!-- Carte 5 : Image / Promotion -->
+      <a href="{% url 'distributions' %}" style="text-decoration: none;">
+        <div class="sel-card sel-card-image">
+          <img src="{% static 'images/comptable.jpeg' %}" 
+               alt="Promotion manuel scolaire">
+          <div class="sel-card-image-overlay">
+            <div class="sel-card-image-title">-30% sur<br>les manuels</div>
+          </div>
+        </div>
+      </a>
+
+       <a href="{% url 'distributions' %}" style="text-decoration: none;">
+        <div class="sel-card sel-card-image">
+          <img src="{% static 'images/controleur.jpeg' %}" 
+               alt="Promotion manuel scolaire">
+          <div class="sel-card-image-overlay">
+            <div class="sel-card-image-title">-30% sur<br>les manuels</div>
+          </div>
+        </div>
+      </a>
+
+
+             <a href="{% url 'distributions' %}" style="text-decoration: none;">
+        <div class="sel-card sel-card-image">
+          <img src="{% static 'images/securite.jpeg' %}" 
+               alt="Promotion manuel scolaire">
+          <div class="sel-card-image-overlay">
+            <div class="sel-card-image-title">-30% sur<br>les manuels</div>
+          </div>
+        </div>
+      </a>
  
     </div>
   </div>
@@ -2837,9 +2870,7 @@
 
 
 
-<!-- section  nos patenaires commmerciaux -->
-
-
+/* section nos partenaires commerciaux */
 
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -2847,24 +2878,27 @@
  
   /* ── Wrapper ── */
   .aut-wrapper {
-    max-width: 4000px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 36px 24px 40px;
   }
  
-  /* ── Header ── */
+  /* ── Header centré ── */
   .aut-header {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     margin-bottom: 36px;
     flex-wrap: wrap;
+    text-align: center;
   }
  
   .aut-header-left {
     display: flex;
     flex-direction: column;
     gap: 2px;
+    align-items: center;
   }
  
   .aut-eyebrow {
@@ -2890,9 +2924,12 @@
     letter-spacing: -0.5px;
   }
  
-  /* ── Slider ── */
+  /* ── Slider centré ── */
   .aut-slider-outer {
     position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
  
   .aut-track {
@@ -2903,8 +2940,17 @@
     scrollbar-width: none;
     padding-bottom: 12px;
     padding-top: 8px;
+    justify-content: center;
   }
   .aut-track::-webkit-scrollbar { display: none; }
+ 
+  /* ── Conteneur des cartes centré ── */
+  .aut-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
  
   /* ── Carte auteur ── */
   .aut-card {
@@ -2966,13 +3012,14 @@
     color: #1a3d6e;
   }
  
-  /* ── Footer dots + nav + bouton ── */
+  /* ── Footer dots + nav + bouton (centrés) ── */
   .aut-slider-footer {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
     margin-top: 22px;
+    flex-wrap: wrap;
   }
  
   .aut-dots {
@@ -2995,7 +3042,6 @@
   .aut-nav-btns {
     display: flex;
     gap: 0;
-    margin-left: auto;
     align-items: center;
     border: 1.5px solid #ccc;
     border-radius: 8px;
@@ -3014,7 +3060,7 @@
     font-family: inherit;
     border-radius: 8px;
     transition: background 0.2s, color 0.2s;
-    margin-right: 4px;
+    margin-right: 8px;
   }
   .aut-all-btn:hover {
     background: #f0f4fa;
@@ -3035,12 +3081,70 @@
   }
   .aut-nav-btn:first-child { border-left: none; }
   .aut-nav-btn:hover { background: #f0f4fa; }
+ 
+  /* Responsive : sur petit écran, les cartes se centrent et s'adaptent */
+  @media (max-width: 768px) {
+    .aut-wrapper {
+      padding: 24px 16px;
+    }
+    
+    .aut-main-title {
+      font-size: 26px;
+    }
+    
+    .aut-avatar-ring {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .aut-card {
+      min-width: 140px;
+      max-width: 140px;
+    }
+    
+    .aut-cards-container {
+      gap: 12px;
+    }
+    
+    .aut-slider-footer {
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .aut-all-btn {
+      margin-right: 0;
+    }
+  }
+ 
+  @media (max-width: 480px) {
+    .aut-avatar-ring {
+      width: 100px;
+      height: 100px;
+    }
+    
+    .aut-card {
+      min-width: 120px;
+      max-width: 120px;
+    }
+    
+    .aut-name {
+      font-size: 12px;
+    }
+    
+    .aut-main-title {
+      font-size: 22px;
+    }
+    
+    .aut-eyebrow {
+      font-size: 11px;
+    }
+  }
 </style>
 
  
 <div class="aut-wrapper">
  
-  <!-- ── Header ── -->
+  <!-- ── Header centré ── -->
   <div class="aut-header">
     <div class="aut-header-left">
       <div class="aut-eyebrow">Sur le devant de la scène</div>
@@ -3048,73 +3152,73 @@
     </div>
   </div>
  
-  <!-- ── Slider auteurs ── -->
+  <!-- ── Slider auteurs centré ── -->
   <div class="aut-slider-outer">
     <div class="aut-track" id="aut-track">
- 
-      <!-- Auteur 1 (partiellement visible à gauche) -->
-      <div class="aut-card">
-        <div class="aut-avatar-ring">
-          <img class="aut-avatar-img"
-               src="{% static "images/Longhorn.jpeg" %}"
-               alt="Auteure">
+      <!-- Conteneur des cartes centrées -->
+      <div class="aut-cards-container" id="aut-cards-container">
+        <!-- Auteur 1 -->
+        <div class="aut-card">
+          <div class="aut-avatar-ring">
+            <img class="aut-avatar-img"
+                 src="{% static 'images/Longhorn.jpeg' %}"
+                 alt="Laure Doury">
+          </div>
+          <div class="aut-name">Laure Doury</div>
         </div>
-        <div class="aut-name">Laure Doury</div>
-      </div>
  
-      <!-- Auteur 2 -->
-      <div class="aut-card">
-        <div class="aut-avatar-ring">
-          <img class="aut-avatar-img"
-               src="{% static "images/anucam.jpeg" %}"
-               alt="Ken Follett">
+        <!-- Auteur 2 -->
+        <div class="aut-card">
+          <div class="aut-avatar-ring">
+            <img class="aut-avatar-img"
+                 src="{% static 'images/anucam.jpeg' %}"
+                 alt="Ken Follett">
+          </div>
+          <div class="aut-name">Ken Follett</div>
         </div>
-        <div class="aut-name">Ken Follett</div>
-      </div>
  
-      <!-- Auteur 3 -->
-      <div class="aut-card">
-        <div class="aut-avatar-ring">
-          <img class="aut-avatar-img"
-               src="{% static "images/Nathan.jpeg" %}"
-               alt="Freida McFadden">
-               alt="Freida McFadden">
+        <!-- Auteur 3 -->
+        <div class="aut-card">
+          <div class="aut-avatar-ring">
+            <img class="aut-avatar-img"
+                 src="{% static 'images/Nathan.jpeg' %}"
+                 alt="Freida McFadden">
+          </div>
+          <div class="aut-name">Freida McFadden</div>
         </div>
-        <div class="aut-name">Freida McFadden</div>
-      </div>
  
-      <!-- Auteur 4 (actif / mis en avant) -->
-      <div class="aut-card aut-active">
-        <div class="aut-avatar-ring">
-          <img class="aut-avatar-img"
-                 src="{% static "images/Cosmo.jpeg" %}"
-               alt="Dan Brown">
+        <!-- Auteur 4 (actif / mis en avant) -->
+        <div class="aut-card aut-active">
+          <div class="aut-avatar-ring">
+            <img class="aut-avatar-img"
+                 src="{% static 'images/Cosmo.jpeg' %}"
+                 alt="Dan Brown">
+          </div>
+          <div class="aut-name">Dan Brown</div>
         </div>
-        <div class="aut-name">Dan Brown</div>
-      </div>
  
-      <!-- Auteur 5 -->
-      <div class="aut-card">
-        <div class="aut-avatar-ring">
-          <img class="aut-avatar-img"
-               src="{% static "images/Eclosion.jpeg" %}"
-               alt="Mathilda Di Matteo">
+        <!-- Auteur 5 -->
+        <div class="aut-card">
+          <div class="aut-avatar-ring">
+            <img class="aut-avatar-img"
+                 src="{% static 'images/Eclosion.jpeg' %}"
+                 alt="Mathilda Di Matteo">
+          </div>
+          <div class="aut-name">Mathilda Di Matteo</div>
         </div>
-        <div class="aut-name">Mathilda Di Matteo</div>
       </div>
- 
     </div>
   </div>
  
-  <!-- ── Footer dots + nav ── -->
+  <!-- ── Footer dots + nav centrés ── -->
   <div class="aut-slider-footer">
     <div class="aut-dots">
       <div class="aut-dot aut-dot-active" onclick="aut_goTo(0)"></div>
       <div class="aut-dot" onclick="aut_goTo(1)"></div>
       <div class="aut-dot" onclick="aut_goTo(2)"></div>
     </div>
-    <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
-      <button class="aut-all-btn">tous les auteurs</button>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button class="aut-all-btn">tous les partenaires</button>
       <div class="aut-nav-btns">
         <button class="aut-nav-btn" onclick="aut_slide(-1)">&#8592;</button>
         <button class="aut-nav-btn" onclick="aut_slide(1)">&#8594;</button>
@@ -3128,13 +3232,16 @@
   const aut_track      = document.getElementById('aut-track');
   const aut_dots       = document.querySelectorAll('.aut-dot');
   let   aut_current    = 0;
-  const aut_cardWidth  = 180;
-  const aut_visible    = 8;
-  const aut_totalPages = 3;
+  const aut_cardWidth  = 200;  /* largeur approximative d'une carte avec marges */
+  const aut_visible    = 4;    /* nombre de cartes visibles par page */
+  const aut_totalPages = 3;    /* nombre total de pages */
  
   function aut_goTo(page) {
     aut_current = page;
-    aut_track.scrollTo({ left: page * aut_cardWidth * aut_visible, behavior: 'smooth' });
+    const scrollAmount = page * aut_cardWidth * aut_visible;
+    if (aut_track) {
+      aut_track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    }
     aut_dots.forEach((d, i) => d.classList.toggle('aut-dot-active', i === page));
   }
  
@@ -3143,7 +3250,6 @@
     aut_goTo(next);
   }
 </script>
-
 
 
 

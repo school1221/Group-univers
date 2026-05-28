@@ -602,17 +602,170 @@
 
 
 <style>
-  .vm-wrap { max-width: 900px; margin: 0 auto; padding: 1rem 0; font-family: 'Inter', system-ui, sans-serif; }
-  .vm-row { display: flex; gap: 2.5rem; align-items: flex-start; margin-bottom: 2.5rem; }
-  .vm-row.reverse { flex-direction: row-reverse; }
-  .vm-img { flex: 0 0 55%; }
-  .vm-img img { width: 100%; height: 300px; object-fit: cover; display: block; }
-  .vm-text { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 0.5rem; }
-  .vm-text h2 { font-size: 1.8rem; font-weight: 700; color: #111; margin: 0 0 1rem 0; }
-  .vm-text p { font-size: 0.92rem; color: #333; line-height: 1.65; text-align: justify; margin: 0; }
-  @media (max-width: 600px) {
-    .vm-row, .vm-row.reverse { flex-direction: column; }
-    .vm-img { flex: none; width: 100%; }
+  .vm-wrap { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 2rem 1.5rem; 
+    font-family: 'Inter', system-ui, sans-serif; 
+    background: #ffffff;
+    border-radius: 1rem;
+  }
+  
+  .vm-row { 
+    display: flex; 
+    gap: 2.5rem; 
+    align-items: center; 
+    margin-bottom: 3rem; 
+  }
+  
+  .vm-row.reverse { 
+    flex-direction: row-reverse; 
+  }
+  
+  .vm-img { 
+    flex: 0 0 50%; 
+  }
+  
+  .vm-img img { 
+    width: 100%; 
+    height: 320px; 
+    object-fit: cover; 
+    display: block; 
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .vm-img img:hover {
+    transform: scale(1.02);
+  }
+  
+  .vm-text { 
+    flex: 1; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+  }
+  
+  .vm-text h2 { 
+    font-size: 2rem; 
+    font-weight: 700; 
+    color: #0a2540; 
+    margin: 0 0 1rem 0; 
+    border-left: 5px solid #f5a800;
+    padding-left: 1rem;
+  }
+  
+  .vm-text p { 
+    font-size: 1rem; 
+    color: #333; 
+    line-height: 1.65; 
+    text-align: justify; 
+    margin: 0 0 0.8rem 0;
+  }
+  
+  .vm-text p:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* ========== RESPONSIVE ========== */
+  
+  /* Tablette (entre 768px et 1024px) */
+  @media (max-width: 1024px) {
+    .vm-wrap {
+      padding: 1.5rem;
+    }
+    
+    .vm-text h2 {
+      font-size: 1.8rem;
+    }
+    
+    .vm-text p {
+      font-size: 0.95rem;
+    }
+    
+    .vm-img img {
+      height: 280px;
+    }
+  }
+  
+  /* Mobile (entre 600px et 768px) */
+  @media (max-width: 768px) {
+    .vm-row, .vm-row.reverse { 
+      flex-direction: column; 
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .vm-img { 
+      flex: none; 
+      width: 100%;
+      order: 1;
+    }
+    
+    .vm-text {
+      order: 2;
+      width: 100%;
+    }
+    
+    .vm-img img { 
+      height: 250px; 
+    }
+    
+    .vm-text h2 {
+      font-size: 1.6rem;
+    }
+    
+    .vm-text p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* Petit mobile (moins de 480px) */
+  @media (max-width: 480px) {
+    .vm-wrap {
+      padding: 1rem;
+    }
+    
+    .vm-row, .vm-row.reverse {
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .vm-img img {
+      height: 200px;
+      border-radius: 0.75rem;
+    }
+    
+    .vm-text h2 {
+      font-size: 1.4rem;
+      border-left-width: 4px;
+      padding-left: 0.75rem;
+    }
+    
+    .vm-text p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+  }
+  
+  /* Très petit mobile (moins de 360px) */
+  @media (max-width: 360px) {
+    .vm-wrap {
+      padding: 0.75rem;
+    }
+    
+    .vm-img img {
+      height: 180px;
+    }
+    
+    .vm-text h2 {
+      font-size: 1.3rem;
+    }
+    
+    .vm-text p {
+      font-size: 0.8rem;
+    }
   }
 </style>
 
@@ -630,7 +783,7 @@
   <div class="vm-row reverse">
     <div class="vm-text">
       <h2>Notre mission</h2>
-      <p>Notre mission est de garantir à chaque enfant l’accès à une éducation de qualité, peu importe où il se trouve. Pour y parvenir, nous nous engageons à rendre le manuel scolaire disponible dans les moindres recoins du territoire national, brisant ainsi les barrières de la distance. </p>
+      <p>Notre mission est de garantir à chaque enfant l'accès à une éducation de qualité, peu importe où il se trouve. Pour y parvenir, nous nous engageons à rendre le manuel scolaire disponible dans les moindres recoins du territoire national, brisant ainsi les barrières de la distance.</p>
       <p>En rapprochant le savoir des élèves des zones les plus reculées, nous contribuons activement à l'égalité des chances et à la construction d'un avenir meilleur pour toute la nation. Ensemble, faisons rayonner l'éducation aux quatre coins du Cameroun.</p>
     </div>
     <div class="vm-img">
@@ -638,7 +791,6 @@
     </div>
   </div>
 </div>
-
 
 
     

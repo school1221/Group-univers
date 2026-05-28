@@ -196,6 +196,7 @@
     align-items: center;
     gap: 48px;
     flex-wrap: wrap;
+    margin-bottom: 24px;
 }
 
 .help-title {
@@ -224,6 +225,21 @@
 
 .help-link:hover {
     color: var(--brand-color);
+}
+
+/* Copyright centré et noir */
+.copyright-center {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 20px;
+}
+
+.copyright-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000000;
+    margin: 0;
+    letter-spacing: 0.5px;
 }
 
 /* Responsive */
@@ -391,6 +407,11 @@
                         <li><a href="{% url 'services' %}" class="help-link">Services & produits</a></li>
                         <li><a href="{% url 'apropos' %}" class="help-link">À propos</a></li>
                     </ul>
+                </div>
+                
+                <!-- Copyright centré et noir -->
+                <div class="copyright-center">
+                    <h3 class="copyright-text">2026 © DONGMO.T/ Informaticien/Community Manager/(+237)651 55 96 00.</h3>
                 </div>
             </div>
         </div>
